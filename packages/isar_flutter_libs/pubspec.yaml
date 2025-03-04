@@ -11,12 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  isar: 
-    git:
-      url: https://github.com/morpheushq/isar_legacy.git
-      path: packages/isar
-      ref: 3.1.0+2
-
+  isar:
+    path: ../isar
 flutter:
   plugin:
     platforms:
