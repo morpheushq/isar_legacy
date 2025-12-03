@@ -95,7 +95,10 @@ void _initializePath(String? libraryPath) {
   final bindings = IsarCoreBindings(dylib);
 
   final coreVersion = bindings.isar_version().cast<Utf8>().toDartString();
-  if (coreVersion != Isar.version && coreVersion != 'debug') {
+  final isCompatibleVersion = coreVersion == Isar.version ||
+                               coreVersion == 'debug' ||
+                               (Isar.version == '3.1.0+1' && coreVersion == '3.1.0');
+  if (!isCompatibleVersion) {
     throw IsarError(
       'Incorrect Isar Core version: Required ${Isar.version} found '
       '$coreVersion. Make sure to use the latest isar_flutter_libs. If you '
